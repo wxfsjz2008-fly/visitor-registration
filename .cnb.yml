@@ -14,7 +14,7 @@ main:
         # 镜像标签使用仓库路径和 commit SHA
         IMAGE_NAME: ${CNB_DOCKER_REGISTRY}/${CNB_REPO_SLUG_LOWERCASE}
         IMAGE_TAG_LATEST: ${CNB_DOCKER_REGISTRY}/${CNB_REPO_SLUG_LOWERCASE}:latest
-        IMAGE_TAG_SHA: ${CNB_DOCKER_REGISTRY}/${CNB_REPO_SLUG_LOWERCASE}:${CNB_COMMIT_SHORT_SHA}
+        IMAGE_TAG_SHA: ${CNB_DOCKER_REGISTRY}/${CNB_REPO_SLUG_LOWERCASE}:${CNB_COMMIT_SHORT}
       stages:
         - name: 📦 安装依赖
           script: npm install
