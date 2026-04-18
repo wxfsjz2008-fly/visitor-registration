@@ -67,8 +67,8 @@ main:
             TKE_REGISTRY: ccr.ccs.tencentyun.com
             TKE_NAMESPACE: xiongfei
             TKE_IMAGE_NAME: xiongfeiwu
-            TKE_USERNAME: "100000000000"
-            TKE_PASSWORD: "${TKE_REGISTRY_PASSWORD}"
+            TKE_USERNAME: "100013033031"
+            TKE_PASSWORD: "AAAA@1111"
           script: |
             echo "登录 TKE 镜像仓库..."
             echo "${TKE_PASSWORD}" | docker login ${TKE_REGISTRY} -u ${TKE_USERNAME} --password-stdin
