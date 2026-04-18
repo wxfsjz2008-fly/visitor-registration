@@ -62,31 +62,29 @@ main:
             echo "镜像地址: ${IMAGE_TAG_LATEST}"
             echo "镜像地址: ${IMAGE_TAG_SHA}"
 
-        - name: 🚀 推送镜像到 TKE 镜像仓库
+        - name: 🚀 推送镜像到腾讯云容器镜像服务 (TCR)
           env:
-            TKE_REGISTRY: ccr.ccs.tencentyun.com
-            TKE_NAMESPACE: xiongfei
-            TKE_IMAGE_NAME: xiongfeiwu
-            TKE_USERNAME: "100013033031"
-            TKE_PASSWORD: "AAAA@1111"
+            TCR_REGISTRY: xiongfeiwu.tencentcloudcr.com
+            TCR_USERNAME: "100013033031"
+            TCR_PASSWORD: "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNZRE86SkZPWTpOVVlGOk9RNVU6UVFBSzo3SVdDOllGTkg6V1lLNDpFVEJBOjdaTFE6M1pOUTpHM0FGIn0.eyJvd25lclVpbiI6IjEwMDAxODAyMTkzMiIsIm9wZXJhdG9yVWluIjoiMTAwMDEzMDMzMDMxIiwiZXhwIjoxNzc2NTI3NzgxLCJuYmYiOjE3NzY1MjQxODEsImlhdCI6MTc3NjUyNDE4MX0.qZi7RAv2rXgJyupMalJNRSquHAmtPtyJG76vfpG_ZjrHlRp2HIny5kjtPvuInhx41x_WxV9rDCGShGsq7iLc6vCu6Fnf5Y8H2g77A0pvynmjMQz0p3UcXyE-3okcra1mMkkiYTxJ9KYKm7ooF2hUTFJHvdGaG5S_36LmF65KB4PHoVnMI3L6MWiM8Vfkiufvm86UPRtq-RlqqKZa6-L3wwk2vAZ1DpOXAwcHlvGn2H-WJlTVmInPctiDYboADb_nA6cmnZNF4wyRpmTgXv7_eD23hDcOJJ38wPPUuql2Ki6rgJ7zkuALWfoYszYtBrwHDXhCsAJY-OyUenjRGBmOIw"
           script: |
-            echo "登录 TKE 镜像仓库..."
-            echo "${TKE_PASSWORD}" | docker login ${TKE_REGISTRY} -u ${TKE_USERNAME} --password-stdin
+            echo "登录腾讯云容器镜像服务 (TCR)..."
+            echo "${TCR_PASSWORD}" | docker login ${TCR_REGISTRY} -u ${TCR_USERNAME} --password-stdin
             
-            # 重新标记镜像
-            TKE_IMAGE_LATEST="${TKE_REGISTRY}/${TKE_NAMESPACE}/${TKE_IMAGE_NAME}:latest"
-            TKE_IMAGE_SHA="${TKE_REGISTRY}/${TKE_NAMESPACE}/${TKE_IMAGE_NAME}:${CNB_COMMIT_SHORT}"
+            # 重新标记镜像 (需要指定命名空间，这里使用 visitor-registration)
+            TCR_IMAGE_LATEST="${TCR_REGISTRY}/visitor-registration/visitor-registration:latest"
+            TCR_IMAGE_SHA="${TCR_REGISTRY}/visitor-registration/visitor-registration:${CNB_COMMIT_SHORT}"
             
-            docker tag ${IMAGE_TAG_LATEST} ${TKE_IMAGE_LATEST}
-            docker tag ${IMAGE_TAG_LATEST} ${TKE_IMAGE_SHA}
+            docker tag ${IMAGE_TAG_LATEST} ${TCR_IMAGE_LATEST}
+            docker tag ${IMAGE_TAG_LATEST} ${TCR_IMAGE_SHA}
             
-            # 推送到 TKE
-            docker push ${TKE_IMAGE_LATEST}
-            docker push ${TKE_IMAGE_SHA}
+            # 推送到 TCR
+            docker push ${TCR_IMAGE_LATEST}
+            docker push ${TCR_IMAGE_SHA}
             
-            echo "✅ TKE 镜像推送成功!"
-            echo "TKE 镜像地址: ${TKE_IMAGE_LATEST}"
-            echo "TKE 镜像地址: ${TKE_IMAGE_SHA}"
+            echo "✅ TCR 镜像推送成功!"
+            echo "TCR 镜像地址: ${TCR_IMAGE_LATEST}"
+            echo "TCR 镜像地址: ${TCR_IMAGE_SHA}"
 
 # 当创建 tag 时也触发构建（用于版本发布）
 # tags:
