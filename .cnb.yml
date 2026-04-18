@@ -1,6 +1,33 @@
 # CNB 云原生构建配置文件
 # 文档: https://docs.cnb.cool/zh/build/intro.html
 
+# ===== 云原生开发环境配置 =====
+# 用于在线开发、调试和测试容器
+$:
+  vscode:
+    - services:
+        - vscode
+        - docker  # 开启 Docker 服务，用于运行容器
+      docker:
+        image: node:20-alpine
+        volumes:
+          - /root/.npm:copy-on-write
+      env:
+        IMAGE_TAG: docker.cnb.cool/xiongfeiwu/visitor-registration:latest
+      stages:
+        - name: 🔧 准备开发环境
+          script: |
+            echo "开发环境启动中..."
+            npm install
+            echo "✅ 开发环境准备完成!"
+            echo ""
+            echo "🐳 运行容器镜像测试命令:"
+            echo "   docker pull ${IMAGE_TAG}"
+            echo "   docker run -d -p 8080:80 --name visitor-app ${IMAGE_TAG}"
+            echo ""
+            echo "📦 本地开发命令:"
+            echo "   npm run dev"
+
 main:
   # 当推送到 main 分支时触发构建
   push:
