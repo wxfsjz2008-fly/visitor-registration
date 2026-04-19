@@ -30,6 +30,7 @@ export function VisitorRegistrationForm() {
     company: '',
     purpose: '',
     personToVisit: '',
+    visiteeCompany: '',
     visitTime: getLocalDateTimeString(),
     notes: '',
   })
@@ -91,6 +92,7 @@ export function VisitorRegistrationForm() {
       company: '',
       purpose: '',
       personToVisit: '',
+      visiteeCompany: '',
       visitTime: getLocalDateTimeString(),
       notes: '',
     })
@@ -116,6 +118,7 @@ export function VisitorRegistrationForm() {
         company: formData.company.trim(),
         purpose: formData.purpose.trim(),
         personToVisit: formData.personToVisit.trim(),
+        visiteeCompany: formData.visiteeCompany.trim(),
         visitTime: new Date(formData.visitTime).toISOString(),
         notes: formData.notes.trim(),
       }
@@ -196,6 +199,17 @@ export function VisitorRegistrationForm() {
               />
             </div>
 
+            {/* 来访时间 */}
+            <div className="space-y-2">
+              <Label htmlFor="visitTime">来访时间</Label>
+              <Input
+                id="visitTime"
+                type="datetime-local"
+                value={formData.visitTime}
+                onChange={(e) => handleChange('visitTime', e.target.value)}
+              />
+            </div>
+
             {/* 被访人员 */}
             <div className="space-y-2">
               <Label htmlFor="personToVisit">
@@ -213,14 +227,14 @@ export function VisitorRegistrationForm() {
               )}
             </div>
 
-            {/* 来访时间 */}
+            {/* 被访者公司 */}
             <div className="space-y-2">
-              <Label htmlFor="visitTime">来访时间</Label>
+              <Label htmlFor="visiteeCompany">被访者公司</Label>
               <Input
-                id="visitTime"
-                type="datetime-local"
-                value={formData.visitTime}
-                onChange={(e) => handleChange('visitTime', e.target.value)}
+                id="visiteeCompany"
+                value={formData.visiteeCompany}
+                onChange={(e) => handleChange('visiteeCompany', e.target.value)}
+                placeholder="请输入被访者所属公司（选填）"
               />
             </div>
 

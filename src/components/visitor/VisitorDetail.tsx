@@ -25,6 +25,7 @@ export function VisitorDetail({ visitor }: VisitorDetailProps) {
     { label: '公司/组织', value: visitor.company || '-' },
     { label: '来访目的', value: visitor.purpose },
     { label: '被访人员', value: visitor.personToVisit },
+    { label: '被访者公司', value: visitor.visiteeCompany || '-' },
     { label: '来访时间', value: formatDateTime(visitor.visitTime) },
     { label: '备注', value: visitor.notes || '-' },
     { label: '登记时间', value: formatDateTime(visitor.createdAt) },

@@ -290,6 +290,7 @@ export function VisitorTable() {
                     <TableHead>手机号码</TableHead>
                     <TableHead>公司/组织</TableHead>
                     <TableHead>被访人员</TableHead>
+                    <TableHead>被访者公司</TableHead>
                     <TableHead>来访时间</TableHead>
                     <TableHead>登记时间</TableHead>
                     <TableHead className="text-right">操作</TableHead>
@@ -302,6 +303,7 @@ export function VisitorTable() {
                       <TableCell>{visitor.phone}</TableCell>
                       <TableCell>{visitor.company || '-'}</TableCell>
                       <TableCell>{visitor.personToVisit}</TableCell>
+                      <TableCell>{visitor.visiteeCompany || '-'}</TableCell>
                       <TableCell>{formatDateTime(visitor.visitTime)}</TableCell>
                       <TableCell>{formatDateTime(visitor.createdAt)}</TableCell>
                       <TableCell className="text-right">

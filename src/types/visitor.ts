@@ -6,6 +6,7 @@ export interface Visitor {
   company: string           // 公司/组织（可选）
   purpose: string           // 来访目的
   personToVisit: string     // 被访人员
+  visiteeCompany: string    // 被访者公司（可选）
   visitTime: string         // 来访时间 (ISO 8601)
   notes: string             // 备注（可选）
   createdAt: string         // 创建时间 (ISO 8601)

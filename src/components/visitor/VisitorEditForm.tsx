@@ -34,6 +34,7 @@ export function VisitorEditForm({ visitor, onSave, onCancel }: VisitorEditFormPr
     company: visitor.company,
     purpose: visitor.purpose,
     personToVisit: visitor.personToVisit,
+    visiteeCompany: visitor.visiteeCompany || '',
     visitTime: toLocalDateTime(visitor.visitTime),
     notes: visitor.notes,
   })
@@ -100,6 +101,7 @@ export function VisitorEditForm({ visitor, onSave, onCancel }: VisitorEditFormPr
         company: formData.company.trim(),
         purpose: formData.purpose.trim(),
         personToVisit: formData.personToVisit.trim(),
+        visiteeCompany: formData.visiteeCompany.trim(),
         visitTime: new Date(formData.visitTime).toISOString(),
         notes: formData.notes.trim(),
       }
@@ -175,6 +177,17 @@ export function VisitorEditForm({ visitor, onSave, onCancel }: VisitorEditFormPr
             {errors.personToVisit && (
               <p className="text-sm text-destructive">{errors.personToVisit}</p>
             )}
+          </div>
+
+          {/* 被访者公司 */}
+          <div className="space-y-2">
+            <Label htmlFor="edit-visiteeCompany">被访者公司</Label>
+            <Input
+              id="edit-visiteeCompany"
+              value={formData.visiteeCompany}
+              onChange={(e) => handleChange('visiteeCompany', e.target.value)}
+              placeholder="请输入被访者所属公司（选填）"
+            />
           </div>
 
           {/* 来访时间 */}
