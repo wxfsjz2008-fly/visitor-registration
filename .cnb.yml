@@ -68,7 +68,7 @@ main:
             TCR_NAMESPACE: xiongfei
             TCR_IMAGE_NAME: vistorapp
             TCR_USERNAME: "100013033031"
-            TCR_PASSWORD: "AAAA@1111"
+            TCR_PASSWORD: "eyJhbGciOiJSUzI1NiIsImtpZCI6Iks1RVc6NVFUUDpDSVhaOkdVWkY6UzNFQjpHTlVPOjMzWVU6TlhXUzpJVkI3OldLV006U0dTUTpISTNSIn0.eyJvd25lclVpbiI6IjEwMDAxODAyMTkzMiIsIm9wZXJhdG9yVWluIjoiMTAwMDEzMDMzMDMxIiwiZXhwIjoxNzc3NTU3NTQ3LCJuYmYiOjE3Nzc1NTM5NDcsImlhdCI6MTc3NzU1Mzk0N30.alY8O5sRBaMGZaYgeAt6QGjY8ALRsIAupN3_QHio-pqwBNt_-NnVKrmZ395KxgcbRvDLhRgIYM3pDs9gxrtkLxh5bhrsi573L4hoA1Lxufo6AWpytPWX4zt_PMGu9yWfjLXwulSGEsS8PQLIIkPBfA42b012YRYZ0UqKUSR_g_tvyKOWgParVUFQoweHncqUUnKdb9ejpOyuYOJVN0QNeaGet27qOGIl2sak6jVXUhRdBuL0TFuoJ0TZewKOKNi273DuEaCU0Z9O2ZgR9kNH3-DiB6IdISgUfMTx3RKHx_xOvS5PqYyZHTz4A_dAcrB-usUblCkAgqcmd0wOHTFBXw"
           script: |
             echo "登录腾讯云镜像仓库..."
             echo "${TCR_PASSWORD}" | docker login ${TCR_REGISTRY} -u ${TCR_USERNAME} --password-stdin
