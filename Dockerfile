@@ -1,13 +1,16 @@
 # 构建阶段
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
+
+# 设置 npm 镜像源（加速国内访问）
+RUN npm config set registry https://registry.npmmirror.com
 
 # 复制依赖文件
 COPY package*.json ./
 
-# 安装依赖
-RUN npm ci
+# 安装依赖（使用 --legacy-peer-deps 解决依赖冲突）
+RUN npm ci --legacy-peer-deps
 
 # 复制源代码
 COPY . .
