@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# 访客登记系统 (Visitor Registration System)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个基于 React + TypeScript + Vite 构建的现代化访客登记管理系统。
 
-Currently, two official plugins are available:
+## 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 📝 **访客登记**：快速录入访客信息，包括姓名、电话、身份证、车牌号、受访人等
+- 📋 **访客列表**：查看所有访客记录，支持搜索和筛选
+- 👁️ **访客详情**：查看访客详细信息
+- ✏️ **编辑功能**：支持修改已登记的访客信息
+- 🗑️ **删除功能**：支持删除访客记录
+- 💾 **本地存储**：数据保存在浏览器 localStorage 中
 
-## React Compiler
+## 技术栈
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui 组件库
 
-## Expanding the ESLint configuration
+## 快速开始
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 安装依赖
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 开发模式
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+### 预览生产版本
+
+```bash
+npm run preview
+```
+
+## Docker 部署
+
+本项目包含 Dockerfile，支持容器化部署：
+
+```bash
+# 构建镜像
+docker build -t visitor-registration .
+
+# 运行容器
+docker run -p 80:80 visitor-registration
+```
+
+## 项目结构
+
+```
+src/
+├── components/     # React 组件
+│   ├── ui/        # 基础 UI 组件
+│   └── visitor/   # 访客相关组件
+├── pages/         # 页面组件
+├── types/         # TypeScript 类型定义
+├── utils/         # 工具函数
+└── hooks/         # React Hooks
+```
+
+## 最后一次更新
+
+- 更新时间：2026-04-30 22:20
+- 触发 Docker 自动构建测试
