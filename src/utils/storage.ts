@@ -198,6 +198,7 @@ export function importVisitors(jsonString: string): { success: boolean; count: n
           company: item.company || '',
           purpose: item.purpose,
           personToVisit: item.personToVisit,
+          visiteeCompany: item.visiteeCompany || '',
           visitTime: item.visitTime,
           notes: item.notes || '',
           createdAt: new Date().toISOString(),
