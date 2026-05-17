@@ -1,4 +1,4 @@
-import { DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import type { Visitor } from '@/types'
 
 interface VisitorDetailProps {
@@ -38,6 +38,7 @@ export function VisitorDetail({ visitor }: VisitorDetailProps) {
     <>
       <DialogHeader>
         <DialogTitle>访客详情</DialogTitle>
+        <DialogDescription>查看访客的详细信息</DialogDescription>
       </DialogHeader>
       <div className="grid gap-4 py-4">
         {fields.map((field) => (

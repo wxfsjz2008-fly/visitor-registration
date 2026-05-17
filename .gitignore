@@ -31,3 +31,6 @@ test-*.png
 
 # Playwright
 .playwright-cli/
+
+# Test coverage
+coverage/

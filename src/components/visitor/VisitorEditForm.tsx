@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
+import { DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog'
 import type { Visitor } from '@/types'
 
 interface VisitorEditFormProps {
@@ -116,6 +116,7 @@ export function VisitorEditForm({ visitor, onSave, onCancel }: VisitorEditFormPr
     <>
       <DialogHeader>
         <DialogTitle>编辑访客信息</DialogTitle>
+        <DialogDescription>修改访客的登记信息</DialogDescription>
       </DialogHeader>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
