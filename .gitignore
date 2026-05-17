@@ -34,3 +34,6 @@ test-*.png
 
 # Test coverage
 coverage/
+
+# SonarQube
+.scannerwork/
