@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import { Toaster } from './components/ui/toaster'
 import './index.css'
 
+// Lazy load pages for better initial load performance
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage').then(m => ({ default: m.RegistrationPage })))
 const ListPage = lazy(() => import('./pages/ListPage').then(m => ({ default: m.ListPage })))
 
